@@ -1,0 +1,10 @@
+# Eclipse files
+.project
+.settings
+.classpath
+
+# Maven build files
+target
+
+# Temporary editor files
+*~

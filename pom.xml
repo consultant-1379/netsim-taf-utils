@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ericsson.oss</groupId>
+        <artifactId>integration</artifactId>
+        <version>1.0.105</version>
+    </parent>
+
+    <groupId>com.ericsson.cifwk</groupId>
+    <artifactId>netsim-taf-utils</artifactId>
+
+    <name>NETSim Utilities for TAF projects</name>
+    <description>A place for common code for TAF users who do similar things in test case business logic with NETSim</description>
+
+    <!-- Version: v.w.x.y.z[-SNAPSHOT] z: this project minor version (bumped
+        when new change in this project) y: this project major version (bumped when
+        compatibility break in this project) x: taf patch version (update taf_version
+        property also) w: taf minor version (update taf_version property also) v:
+        taf major version (update taf_version property also) -->
+    <version>3.0.70.0.6-SNAPSHOT</version>
+
+    <properties>
+        <taf_version>3.0.70</taf_version>
+        <!--  -->
+        <groovy-eclipse-compiler.version>2.7.0-01</groovy-eclipse-compiler.version>
+        <target.java.version>1.7</target.java.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.ericsson.cifwk</groupId>
+                <artifactId>taf-bom</artifactId>
+                <version>${taf_version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ericsson.cifwk</groupId>
+            <artifactId>taf-netsim</artifactId>
+            <version>${taf_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.5.1</version>
+                    <configuration>
+                        <source>${target.java.version}</source>
+                        <target>${target.java.version}</target>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.codehaus.groovy</groupId>
+                            <artifactId>groovy-eclipse-compiler</artifactId>
+                            <version>${groovy-eclipse-compiler.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <generateReports>false</generateReports>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerId>groovy-eclipse-compiler</compilerId>
+                    <verbose>true</verbose>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
